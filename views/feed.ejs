@@ -1,0 +1,39 @@
+<%include ./partials/header.ejs%>
+    <div class="d-flex "
+        style="align-items: center;flex-direction: column; justify-content: center; gap: 10px; padding-top: 50px;">
+        <%allPosts.reverse().forEach(function(post){ %>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <div id="flex">
+                        <img src="<%=post.userId.image%>" alt="">
+                        <h5 class="card-title" style="text-transform: capitalize;">
+                            <a style="text-decoration: none; color: black;" href="/postprofile/<%=post.userId.username%>"><%=post.userId.username%></a>
+                        </h5>
+                    </div>
+                    <p class="card-title">
+                        <%=post.data%>
+                    </p>
+                    <div style="display: flex; gap: 10px;" id="likecom">
+                        <p style="font-weight: 600;" class="text-primary">
+                            <%= post.likes.length %> Likes
+                        </p>
+                        <p style="font-weight: 600;" class="text-primary">
+                            <%= post.comment[post.comment.length-1].userId.username %> & <%=post.comment.length-1%>
+                                    Others
+                        </p>
+                    </div>
+                    <div id="flex">
+                        <a style="padding: 5px 10px;height: 40px;margin-top: 10px; font-size: 15px;"
+                            href="/like/<%=post._id%>" class="btn btn-primary">Like</a>
+                        <form action="/comment/<%=post._id%>" method="post" style="margin-left: 10px;">
+                            <textarea id="comment" name="comment" placeholder="Drop comment"></textarea>
+                            <button type="submit"
+                                style="position: absolute;right: 5%; font-size: 10px;bottom:11%;padding: 10px 9px; transform: transform(-50%,-50%);"
+                                class="btn btn-primary">Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <%})%>
+    </div>
+    <%include ./partials/footer.ejs%>

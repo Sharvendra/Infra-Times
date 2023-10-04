@@ -1,0 +1,61 @@
+<% include ./partials/header.ejs%>
+
+    <div class="container">
+        <h3
+            style="position: absolute; top: 15%;left: 50%; transform: translate(-50%,-50%);font-weight: 500;font-size: 20px;">
+            Update your profile</h3>
+        <div class="card" style="width: 18rem; position: absolute; top: 50%;left: 50%;transform: translate(-50%,-50%);">
+            <div class="card-body">
+                <form action="/update" method="post">
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input disabled type="text" name="email" value="<%=user.email%>"   class="form-control"
+                            id="email" aria-describedby="emailHelp">
+                            <!-- <p style="display: none;color: red; font-size: 12px;" id="war">invalid username</p> -->
+                    </div>
+                    <div class="mb-3">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" placeholder="enter new username"   class="form-control"
+                            id="username" aria-describedby="emailHelp">
+                            <p style="display: none;color: red; font-size: 12px;" id="war">invalid username</p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1">Contact</label>
+                        <input type="text" name="contact" placeholder="enter new contact"  class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1">Age</label>
+                        <input disabled type="text" name="age" value="<%=user.age%>"  class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <button id="update" type="submit" style="width: 100%;" class="btn btn-warning">Update</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+        var inp=document.querySelector("#username");
+        inp.addEventListener("input",function(){
+            if(inp.value.length>0){
+            axios.get(`/update/${inp.value}`)
+            .then(function(data){
+                if(data.data){
+                    //  inp.style.boxShadow= '0 0.5rem 1rem rgba(0, 0, 0, 0.15)';
+                    document.querySelector("#war").style.display="block"
+               document.querySelector("#update").setAttribute("disabled",true);
+                }
+                else{
+                    document.querySelector("#war").style.display="none"
+
+                    document.querySelector("#update").removeAttribute("disabled",true);
+
+                }
+            })
+            }
+        })
+    </script>
+    <% include ./partials/footer.ejs%>

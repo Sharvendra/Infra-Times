@@ -1,0 +1,47 @@
+<% include ./partials/header.ejs%>
+
+  <div class="container">
+    <div id="profile" class="card "
+      style="width: 30rem; margin-top: 50px;  margin-left: 30%;">
+      <div class="flex">
+        <div class="parentcircle">
+          <img src="../images/uploads/<%=foundUser.image%>" class="card-img-top" alt="...">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title" style="text-transform: capitalize;">
+            <%=foundUser.username%> <a style="padding: 5px 8px; background-color: royalblue;border-radius: 5px; color: white; text-decoration: none;font-size: 16px;" href="/followUnfollow/<%=foundUser.username%>" >Follow</a>   
+        </h5>
+          <p><b><%=foundUser.post.length%></b> posts</p>  
+          <p class="card-text" style="font-size: 14px; word-spacing: 0.32px;">Some quick example text to build on the
+            card title and make up the bulk of the card's content.</p>
+          <!--<a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+        </div>
+      </div>
+      <%foundUser.post.reverse().forEach(function(post){%>
+        <div class="card" style="width: 28.5rem; margin-left: 10px; margin-bottom: 5px;">
+          <!-- <img src="../public/images/uploads/<%=foundUser.image%>" class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            <h5 class="card-title" style="text-transform: capitalize;">@<%=foundUser.username%>
+            </h5>
+            <p class="card-text">
+              <%=post.data%>
+            </p>
+            <div style="display: flex; gap: 10px;" id="likecom">
+              <p style="font-weight: 600;" class="text-primary">
+                  <%= post.likes.length %> Likes
+              </p>
+              <p style="font-weight: 600;" class="text-primary">
+                <%=post.comment.length%> Comments
+              </p>
+          </div>
+            <a href="/like/<%=post._id%>" class="btn btn-primary">Like</a>
+          </div>
+        </div>
+        <% })%>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <% include ./partials/footer.ejs%>

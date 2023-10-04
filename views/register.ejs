@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instagram</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  </head> 
+  <body>
+  <div class="container">
+    <div class="card" style="width: 18rem; position: absolute;margin-top: 1%; top: 50%;left: 50%;transform: translate(-50%,-50%);">
+      <img style="height: 150px;" src="https://cdn.siasat.com/wp-content/uploads/2022/02/Instagram-2.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <form action="/signup" method="post">
+          <div class="mb-3">
+            <input type="text" name="username" placeholder="username" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <input type="text" name="email" placeholder="email" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <input type="text" name="contact" placeholder="contact" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <input type="text" name="age" placeholder="age" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <input type="password" name="password" placeholder="password" class="form-control"
+              id="exampleInputPassword1">
+          </div>
+          <button type="submit" style="width: 100%;" class="btn btn-primary">Signup</button>
+        </form>
+         <p style="margin-top: 5px; text-align: center; margin-bottom: 5px;">OR</p>
+         <button type="submit" style="width: 100%;" class="btn btn-primary">Login with Google</button>
+         <p style="margin-top: 5px; text-align: center; margin-bottom: 5px;">OR</p>
+        <a href="/"><button type="submit" style="width: 100%;" class="btn btn-primary">Back to login</button></a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <% include ./partials/footer.ejs%>
